@@ -12,6 +12,8 @@ services:
       MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
       MYSQL_USER: santino
       MYSQL_PASSWORD: 1234
+    command: --bind-address=0.0.0.0
+
     volumes:
       - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
 
@@ -19,6 +21,6 @@ services:
     container_name: springboot
     build: ./api
     ports:
-      - "8080:8080"
+      - "80:80"
     depends_on:
       - mysql
